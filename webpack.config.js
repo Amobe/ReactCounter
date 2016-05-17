@@ -4,7 +4,7 @@ var webpack = require('webpack')
 var config = {
     entry: {
         app: ['webpack/hot/dev-server', path.resolve(__dirname, 'app/index.js')],
-        vendors: ['react', 'react-dom', 'react-redux'],
+        vendors: ['react', 'react-dom', 'react-redux', 'babel-polyfill'],
     },
     output: {
         path: path.resolve(__dirname, 'build'),

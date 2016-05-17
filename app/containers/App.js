@@ -1,13 +1,13 @@
 import React from 'react'
-import CounterController from '../containers/CounterController'
-import CounterDisplayer from '../containers/CounterDisplayer'
+import CounterCreator from '../containers/CounterCreator'
+import CounterListDisplayer from '../containers/CounterListDisplayer'
 
 export default class App extends React.Component {
     render() {
         return (
             <div className="counter">
-                <CounterDisplayer />
-                <CounterController />
+                <CounterCreator />
+                <CounterListDisplayer />
             </div>
         )
     }
