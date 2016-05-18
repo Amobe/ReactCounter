@@ -6,3 +6,8 @@
     font-size: 50pt;
     font-weight: bold;
 }
+
+.delete {
+    padding: 10px 5px;
+    margin: 5px 0;
+}

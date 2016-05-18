@@ -9,12 +9,14 @@ export default class CounterList extends React.Component {
                 count: PropTypes.number.isRequired,
             }).isRequired
         ).isRequired,
+        onDeleteClick: PropTypes.func.isRequired,
         onIncreaseClick: PropTypes.func.isRequired,
         onDecreaseClick: PropTypes.func.isRequired,
     };
 
     constructor(props) {
         super(props)
+        this.onDeleteClick = this.props.onDeleteClick.bind(this)
         this.onIncreaseClick = this.props.onIncreaseClick.bind(this)
         this.onDecreaseClick = this.props.onDecreaseClick.bind(this)
     }
@@ -32,6 +34,7 @@ export default class CounterList extends React.Component {
                     <Counter
                         key={counter.index}
                         {...counter}
+                        onDeleteClick={() => this.onDeleteClick(counter.index)} 
                         onIncreaseClick={() => this.onIncreaseClick(counter.index)} 
                         onDecreaseClick={() => this.onDecreaseClick(counter.index)} />
                 )}

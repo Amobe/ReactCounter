@@ -1,3 +1,5 @@
+import * as ActionTypes from '../constants/ActionTypes'
+
 const initialState = {
     counterList: [],
 }
@@ -6,11 +8,11 @@ const counter = (state = {}, action) => {
     if (state.index !== action.index)
         return state
     switch(action.type) {
-        case 'INCREASE':
+        case ActionTypes.INCREASE:
             return Object.assign({}, state, {
                 count: state.count + 1,
             })
-        case 'DECREASE':
+        case ActionTypes.DECREASE:
             return Object.assign({}, state, {
                 count: state.count - 1,
             })
@@ -21,7 +23,7 @@ const counter = (state = {}, action) => {
 
 const counterApp = (state = initialState.counterList, action) => {
     switch(action.type) {
-        case 'CREATE_COUNTER':
+        case ActionTypes.CREATE_COUNTER:
             return [
                 ...state,
                 {
@@ -29,17 +31,19 @@ const counterApp = (state = initialState.counterList, action) => {
                     count: 0,
                 },
             ]
-        case 'DELETE_COUNTER':
-            return state
-        case 'INCREASE':
-        case 'DECREASE':
+        case ActionTypes.DELETE_COUNTER:
+            return state.filter((currentCounter) => {
+                return currentCounter.index !== action.index
+            })
+        case ActionTypes.INCREASE:
+        case ActionTypes.DECREASE:
             return state.map((currentCounter) => counter(currentCounter, action))
         default:
             return state
     }
 }
 
-export default function app(state = initialState, action) {
+export default function rootReducer(state = initialState, action) {
     return {
         counterList: counterApp(state.counterList, action),
     }

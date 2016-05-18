@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { increaseCounter, decreaseCounter } from '../actions'
+import { deleteCounter, increaseCounter, decreaseCounter } from '../actions'
 import CounterList from '../components/CounterList'
 
 const mapStateToProps = (state) => {
@@ -10,6 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        onDeleteClick: (index) => dispatch(deleteCounter(index)),
         onIncreaseClick: (index) => dispatch(increaseCounter(index)),
         onDecreaseClick: (index) => dispatch(decreaseCounter(index)),
     }
